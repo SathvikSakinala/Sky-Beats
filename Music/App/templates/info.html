@@ -1,0 +1,97 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=BioRhyme&display=swap" rel="stylesheet">
+
+
+  <title>Info</title>
+
+  <!-- Custom styles for this template-->
+  <link href="{% static './style-log.css' %}" rel="stylesheet"/>
+
+</head>
+
+<body class="bg-gradient-warning">
+
+  <div class="container">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+      <div class="col-xl-10 col-lg-12 col-md-9">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+              <div class="col-lg-6 d-none d-lg-block">
+                <img src="{% static './register.png' %}" style="width: 100%; height: 100%" alt="Cinque Terre">
+              </div>
+              <div class="col-lg-6">
+                <div class="p-5">
+                  <div class="text-center">
+                    <h1 class="h1 text-gray-900 mb-4" style="font-family: 'BioRhyme', serif;">Choose your Interests</h1>
+                    <hr>
+                  </div>
+
+                  <h1>{{info.gen1}}</h1>    
+
+                  <!--<form method="POST" action="" style="text-align: center;">
+                  {% csrf_token %}
+                    <div style="text-align: left;">
+                  <br><label style="color: black;">Username : </label>&nbsp;&nbsp;&nbsp;{{form.username}}<input style="text-align: center;" type="text" placeholder="Enter Lastname" required autocomplete="off">
+                  <br><label style="color: black;">Email ID : </label>&nbsp;&nbsp;&nbsp;{{form.email}}<input style="text-align: center;" type="email" placeholder="Enter Email ID" required autocomplete="off">
+                  <br><label style="color: black;">Password : </label>&nbsp;&nbsp;&nbsp;{{form.password1}}<input style="text-align: center;" type="password" placeholder="Enter Password" required autocomplete="off">
+                  <br><label style="color: black;">Confirm Password : </label>&nbsp;&nbsp;&nbsp;&nbsp;{{form.password2}}<input style="text-align: center;" type="password" placeholder="Re-Enter Password" required autocomplete="off">
+                </div>
+                {{form.errors}}
+                  <br><a href="{% url 'user_login' %}" style="float: right; font-size: small;">Already have an account?</a>
+                  <br><br><input type="submit" name="Create User" style="background-color: #4CAF50;color: white;padding: 8px 50px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 2px 2px;cursor: pointer;border-radius: 10px;">
+                </form>-->
+                <hr>
+                  <div style="text-align: center;">
+                    <p>Follow us on</p>
+                      <a href="https://facebook.com/CBIT"><i class="fa fa-facebook-square"></i></a>&nbsp;&nbsp;&nbsp;
+                      <a href="https://twitter.com/CBIT"><i class="fa fa-twitter"></i></a>&nbsp;&nbsp;&nbsp;
+                      <a href="https://github.com/CBIT"><i class="fa fa-github"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script>
+var form_fields = document.getElementsByTagName('input')
+form_fields[1].placeholder='Enter Username';
+form_fields[2].placeholder='Enter Email ID';
+form_fields[3].placeholder='Enter Password';
+form_fields[4].placeholder='Re-enter Password';
+
+
+for (var field in form_fields){	
+form_fields[field].className += ' form-control'
+}
+</script>
+</body>
+
+</html>

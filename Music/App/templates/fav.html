@@ -1,0 +1,97 @@
+{% extends 'beat.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    .sty{
+        font-family: 'Radio Canada', sans-serif;
+        line-height: 20px;
+        text-align:center;
+        background-color: white;
+        border: 2px solid rgb(240, 46, 156); 
+        margin: 3% 15%;
+        /*box-shadow: 0 16px 16px -4px rgba(255, 255, 255, 0.1);*/
+        /*box-shadow: rgba(255, 255, 255, 0.3) 0px 19px 38px, rgba(255, 255, 255, 0.22) 0px 15px 12px;*/
+        box-shadow: rgba(240, 46, 156, 0.4) 0px 5px, rgba(240, 46, 156, 0.3) 0px 10px, rgba(240, 46, 156, 0.2) 0px 15px, rgba(240, 46, 156, 0.1) 0px 20px, rgba(240, 46, 156, 0.05) 0px 25px;
+        
+        border-radius: 10px;
+        
+    }
+    .ok{
+        display: flex;
+    }
+
+    .element {
+        flex: 1;
+        margin: 10px;
+    }
+
+    .element:first-child {
+        margin-right: 20px;
+    }
+    .pp{
+        border-radius: 50%;
+    }
+</style>
+
+
+
+<div class="sty">
+    <h1>Welcome to Sky-Beats</h1><hr style="width: 75%;">
+    <h2 style="text-align: center;">Favourites : </h2>
+    <div  style="text-align: center; color: white;">
+        <style>
+            .tab{
+                text-align: center;
+                border-collapse: collapse;
+                width: 100%;
+            }
+            .tab td,.tab th {
+                padding: 8px;
+            }
+            .tab tr:nth-child(even){
+                background-color:#888;
+            }
+            .tab tr:nth-child(odd){
+                background-color:#555;
+            }
+            table tr:hover{
+                background: #ddd;
+            }
+            .tab th{
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: center;
+                background-color: rgba(240, 46, 156,80%);
+                color: white;
+            }
+        </style>
+    
+    
+        <table class="tab">
+            <tr>
+                <th>Track</th>
+                <th>Title</th>
+                <th>Artist</th>
+                <th> </th>
+                <th>Duration</th>
+            </tr>
+            {% for song in songs %}
+            {% if song.fav == True %}
+            <tr>
+                <td><img style="width: 40px; height: 40px;" alt="{{song.title}}" src="{{song.image.url}}"/></td>
+                <td><a style="text-decoration: none;color: white;" href="{% url 'player' %}">{{song.title}}</a></td>
+                <td>{{song.artist}}</td>
+                <td>
+                    <!--<a href=""><i style="color: red;" class="fa fa-heart"></i></a>-->
+                    <a data-song="{{song.id}}" data-action="remove" class="update-fav"><i style="color: red;" class="fa fa-heart"></i></a>
+                </td>
+                <td>{{song.duration}}</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </table>    
+    </div>
+</div>
+
+{% endblock content %}

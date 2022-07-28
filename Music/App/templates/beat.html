@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Radio+Canada&display=swap" rel="stylesheet">
+
+
+    <title>Sky Beats</title>
+    <style>
+        #blurry-filter {
+  width: 100%;
+  height: 9rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4' numOctaves='1'/%3E%3C/filter%3E%3Crect width='100' height='100' style='filter:url(%23f)' opacity='.2'/%3E%3C/svg%3E");
+  mask: linear-gradient(black 7rem, transparent);
+  -webkit-mask: linear-gradient(black 7rem, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  pointer-events: none;
+  touch-action: none; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  font-family: "Open Sans", sans-serif;
+  box-sizing: border-box;
+  cursor: default; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+header {
+  width: 100%;
+  height: 8rem;
+  position: sticky;
+  top: 0;
+  z-index: 1; }
+  header > div {
+    width: calc(100% - 3rem);
+    max-width: 800px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center; }
+
+#title {
+  width: 100%; }
+  #title .parent {
+    line-height: 1em;
+    color: whitesmoke; }
+  #title .name {
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+    mix-blend-mode: difference; }
+
+#reference {
+  display: flex; }
+  #reference > a {
+    color: #fff; }
+    #reference > a + a {
+      margin-left: 1.5rem; }
+
+main, #folders {
+  width: calc(100% - 3rem);
+  max-width: 800px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 1.5rem; }
+
+main > article {
+  width: 100%;
+  height: 32px;
+  padding: 1rem;
+  background-color: #FFF; }
+
+main > figure {
+  width: 100%;
+  margin: 0;
+  background-color: #FFF;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 1rem;
+  transition: all 100ms ease-out; }
+  main > figure:hover {
+    box-shadow: 0 16px 16px -4px rgba(0, 0, 0, 0.3);
+    transform: scale(1.02); }
+  main > figure:after {
+    content: '';
+    padding-bottom: 100%;
+    display: block; }
+
+    main > figure > figcaption {
+    margin-top: 100px;
+    color: #FFF;
+    font-size: 1.25em;
+    font-weight: bold;
+    text-align: center;
+    position: absolute; }
+
+#folders {
+  margin-top: .5rem;
+  margin-bottom: 2rem; }
+  #folders > article {
+    width: 100%;
+    height: 4rem;
+    padding: 0 1.5rem;
+    background-color: #FFF;
+    border-radius: 1rem;
+    line-height: 4rem;
+    transition: all 100ms ease-out; }
+    #folders > article:hover {
+      box-shadow: 0 16px 16px -4px rgba(0, 0, 0, 0.1);
+      transform: scale(1.02); }
+
+footer {
+  width: 100%;
+  height: 8rem; }
+
+    </style>
+</head>
+<body>
+<div id="blurry-filter"></div>
+<header>
+  <style>
+    .sus{
+      color: white;
+    }
+    .sus:hover{
+      /*color: rgb(59, 163, 248);
+      box-shadow: rgb(59, 163, 248);*/
+      color: #fff;
+      animation: pulsate 2s ease-in-out infinite alternate;
+    text-shadow:
+      0 0 7px #00bfff,
+      0 0 10px #00bfff,
+      0 0 21px #00bfff,
+      0 0 42px #00bfff,
+      0 0 82px #00bfff,
+      0 0 92px #00bfff,
+      0 0 102px #00bfff,
+      0 0 151px #00bfff;
+    }
+    @keyframes pulsate {
+    
+    100% {
+  
+        text-shadow:
+        0 0 4px #fff,
+        0 0 11px #fff,
+        0 0 19px #fff,
+        0 0 40px #00bfff,
+        0 0 80px #00bfff,
+        0 0 90px #00bfff,
+        0 0 100px #00bfff,
+        0 0 150px #00bfff;
+    
+    }
+    
+    0% {
+  
+      text-shadow:
+      0 0 4px #fff,
+      0 0 10px #fff,
+      0 0 18px #fff,
+      0 0 38px #00bfff,
+      0 0 73px #00bfff,
+      0 0 80px #00bfff,
+      0 0 94px #00bfff,
+      0 0 140px #00bfff;
+  
+  }
+}
+  </style>
+    <div>
+        <article id="title"><span class="parent sus">Sky Beats</span><br /><span class="name sus">Music</span></article>
+        <article id="title"><form method="POST"><input style="padding: 5px;text-align: center;" type="search" placeholder="Search"/>&emsp;<i class="fa fa-search sus"></i></form></article>
+        <article id="reference"><a href="{% url 'home' %}"><i style="size: 1em;" class="fa fa-home sus"></i></a>
+                                <a href="{% url 'player' %}"><i style="size: 1em;" class="fa fa-music sus"></i></a>
+                                <a href="{% url 'fav' %}"><i style="size: 1em;" class="fa fa-heart sus"></i></a>
+                                <a href="{% url 'dashboard' %}"><i style="size: 1em;" class="fa fa-user sus"></i></a>
+                                <a href="{% url 'logout' %}"><i style="size: 1em;" class="fa fa-sign-out sus"></i></a>
+                                <!--a href="https://dribbble.com/shots/3956995-Apple-OS-MacOS-Finder-UI-motion" target="_blank" rel="noopener"><svg width="24" height="24" viewBox="0 0 32 32">
+                    <path fill="currentcolor" d="M16 0C7.16703 0 0 7.16703 0 16C0 24.833 7.16703 32 16 32C24.8156 32 32 24.833 32 16C32 7.16703 24.8156 0 16 0ZM26.5683 7.37527C28.4772 9.70065 29.6226 12.6681 29.6573 15.8785C29.2061 15.7918 24.6941 14.872 20.1475 15.4447C20.0434 15.2191 19.9566 14.9761 19.8525 14.7332C19.5748 14.0738 19.2625 13.397 18.9501 12.7549C23.9826 10.7072 26.2733 7.75705 26.5683 7.37527ZM16 2.36009C19.4707 2.36009 22.6464 3.66161 25.0586 5.7961C24.8156 6.14317 22.7505 8.90239 17.8915 10.7245C15.6529 6.61171 13.1714 3.24512 12.7896 2.72451C13.8134 2.48156 14.8894 2.36009 16 2.36009ZM10.1866 3.64425C10.551 4.13015 12.9805 7.5141 15.2538 11.5401C8.86768 13.2408 3.22777 13.2061 2.62039 13.2061C3.50542 8.9718 6.36876 5.44902 10.1866 3.64425ZM2.32538 16.0174C2.32538 15.8785 2.32538 15.7397 2.32538 15.6009C2.9154 15.6182 9.54447 15.705 16.3644 13.6573C16.7636 14.4208 17.128 15.2017 17.4751 15.9826C17.3015 16.0347 17.1106 16.0868 16.9371 16.1388C9.89154 18.4121 6.14317 24.6247 5.8308 25.1453C3.6616 22.7332 2.32538 19.5228 2.32538 16.0174ZM16 29.6746C12.8416 29.6746 9.92625 28.5987 7.61822 26.7939C7.86117 26.2907 10.6377 20.9458 18.3427 18.256C18.3774 18.2386 18.3948 18.2386 18.4295 18.2213C20.3557 23.2017 21.1367 27.3839 21.3449 28.5813C19.6963 29.2928 17.8915 29.6746 16 29.6746ZM23.6182 27.3319C23.4794 26.4989 22.7505 22.5076 20.9631 17.5965C25.2495 16.9197 28.9978 18.0304 29.4664 18.1866C28.8764 21.987 26.6898 25.2668 23.6182 27.3319Z"></path>
+                </svg></a><a href="https://codepen.io/iamvdo/pen/xECmI" target="_blank" rel="noopener"><svg width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="currentcolor" d="M15.09 12L12 14.08v.01L8.91 12 12 9.92 15.09 12M12 2a.93.93 0 00-.47.15L2.5 8.11c-.23.11-.41.32-.5.56v6.25c0 .41 0 .41.15.61l9.38 6.33c.14.1.31.14.47.14.16 0 .33-.05.47-.15l9.38-6.35c.15-.17.15-.17.15-.58V8.67a1.04 1.04 0 00-.5-.57l-9.03-5.95A.843.843 0 0012 2m4.58 11l3.01 2.04-6.76 4.56v-4.07L16.58 13m3.11-4.1L16.58 11l-3.75-2.53V4.38l6.86 4.52m.64 1.57v3.06L18.07 12l2.26-1.53M7.42 13l3.75 2.54v4.06l-6.76-4.56L7.42 13M4.31 8.9l6.86-4.51V8.5L7.42 11 4.31 8.9m-.64 1.6L5.93 12l-2.26 1.54V10.5z"></path>
+                </svg></a--></article>
+    </div>
+</header>
+
+{% block content %}
+
+{% endblock content %}
+<!--
+<footer style="text-align: center;">
+  <h1 style="color: white; font-size: .5rem;"> created by <span> Sathvik Reddy and Sathvik Sakinala </span> | all rights reserved! </h1>
+</footer>-->
+<div>
+  <h1>.</h1>
+</div>
+<script type="text/javascript">
+  var user = '{{request.user}}'
+
+  function getToken(name){
+      var cookieValue = null;
+      if(document.cookie && document.cookie !== ''){
+          var cookies = document.cookie.split(';');
+          for (var i = 0;i < cookies.length; i++){
+              var cookie = cookies[i].trim();
+              //Does this cookie string begin with the name we want?
+              if(cookie.substring(0, name.length + 1) === (name + '=')) 
+              {
+                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                  break;
+              }
+          }
+      }
+      return cookieValue;
+  }
+  var csrftoken = getToken('csrftoken');
+
+</script>
+<script src="{% static './log.js' %}"></script>
+
+</body>
+</html>

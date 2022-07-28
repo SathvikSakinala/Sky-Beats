@@ -1,0 +1,151 @@
+{% extends 'beat.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    .sty{
+        font-family: 'Radio Canada', sans-serif;
+        line-height: 20px;
+        text-align:center;
+        background-color: white;
+        border: 2px solid rgba(53, 46, 240, 1); 
+        margin: 3% 15%;
+        /*box-shadow: 0 16px 16px -4px rgba(255, 255, 255, 0.1);*/
+        /*box-shadow: rgba(255, 255, 255, 0.3) 0px 19px 38px, rgba(255, 255, 255, 0.22) 0px 15px 12px;*/
+        box-shadow: rgba(53, 46, 240, 0.4) 0px 5px, rgba(53, 46, 240, 0.3) 0px 10px, rgba(53, 46, 240, 0.2) 0px 15px, rgba(53, 46, 240, 0.1) 0px 20px, rgba(53, 46, 240, 0.05) 0px 25px;
+        
+        border-radius: 10px;
+        
+    }
+    .ok{
+        display: flex;
+    }
+
+    .element {
+        flex: 1;
+        margin: 10px;
+    }
+
+    .element:first-child {
+        margin-right: 20px;
+    }
+    .pp{
+        border-radius: 50%;
+        width: 20%;
+    }
+</style>
+
+
+
+<div class="sty">
+    {% if logged %}
+    <h1>Welcome to Sky-Beats</h1><hr style="width: 75%;">
+    <div class="element">
+        <img class="pp" src="{{request.user.customer.profile_pic.url}}">
+        <h3>{{request.user.customer.name}}</h3>
+        <p>{{request.user.customer.Bio}}</p>
+    </div>
+    <div class="element" style="padding-top: 20px;text-align: center; padding-bottom: 20px;">
+        <style>
+        #flex-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 350px;
+            margin: 0 auto;
+        }
+
+        .flex-item {
+            color: black;
+        }
+        .edit{
+            width: 50%;
+            height: 20%;
+            background-color: rgb(53, 46, 240);
+            margin: 20px;
+            padding: 7px;
+            border-radius: 10px;
+            border: none;
+            transition: all 100ms ease-out;
+        }
+        .edit:hover{
+            background-color: rgb(46, 137, 240);
+        }
+        </style>
+        <div style="text-align: center;" id="flex-container">
+            <div class="flex-item">0</div>
+            <div class="flex-item">0</div>
+            <div class="flex-item">0</div>
+        </div>
+        <div id="flex-container">
+            <div class="flex-item">Posts</div>
+            <div class="flex-item">Followers</div>
+            <div class="flex-item">Following</div>
+        </div>
+        <a href="{% url 'edit_profile' %}"><button class="edit" type="button">Edit Profile</button></a>
+    </div>
+    {% endif %}
+
+</div>
+
+<h1 style="color: white; text-align: center;">Songs</h1>
+
+
+<div class="sty" style="text-align: center; color: white;margin: 3% 5%;">
+    <style>
+        .tab{
+            text-align: center;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .tab td,.tab th {
+            padding: 8px;
+        }
+        .tab tr:nth-child(even){
+            background-color:#888;
+        }
+        .tab tr:nth-child(odd){
+            background-color:#555;
+        }
+        table tr:hover{
+            background: #ddd;
+        }
+        .tab th{
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            background-color: rgba(53,46,240,80%);
+            color: white;
+        }
+    </style>
+
+
+
+    <table class="tab">
+        <tr>
+            <th>Track</th>
+            <th>Title</th>
+            <th>Artist</th>
+            <th> </th>
+            <th>Duration</th>
+        </tr>
+        {% for song in songs %}
+        <tr>
+            <td><img style="width: 40px; height: 40px;" alt="{{song.title}}" src="{{song.image.url}}"/></td>
+            <td><a style="text-decoration: none;color: white;" href="{% url 'player' %}">{{song.title}}</a></td>
+            <td>{{song.artist}}</td>
+            <td>
+                {% if song.fav == True %}
+                <a data-song="{{song.id}}" data-action="remove" class="update-fav"><i style="color: red;" class="fa fa-heart"></i></a>
+                {% else %}
+                <a data-song="{{song.id}}" data-action="add" class="update-fav"><i style="color: white;" class="fa fa-heart"></i></a>
+                {% endif %}
+            </td>
+            <td>{{song.duration}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+{% endblock content %}
